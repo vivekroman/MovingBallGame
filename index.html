@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ball Game</title>
+        <meta name="author" content="Vivek Roman" />
+        <meta name="description" content="This is Ball Game and you are able to start,rewind,restart,continue and stop the ball according to your choice !" />
+        <link rel="stylesheet" href="Ball.css">
+        <link rel="icon" href="https://cdn.icon-icons.com/icons2/37/PNG/512/joystick_game_3819.png"/>
+        <style>
+            body
+{
+    margin: 0;
+    /* background: linear-gradient(rgba(115, 194, 240, 0.952),rgba(77, 192, 87, 0.849)); */
+    background-color: black;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+}
+h1
+{
+    position: relative;
+    text-align: center;
+    font-size: 70px;
+    color: red;
+    
+}
+button
+{
+  position: relative;
+  background-color: rgb(2, 40, 255);
+  color: white;
+  text-align: center;
+  border: none;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+div
+{
+    text-align: center;
+}
+#ball
+{
+    float: left;
+                height: 50px;
+                margin-top: 40px;
+                position: relative;
+            
+}
+        </style>
+    </head>
+    <body id="body">
+        <h1>Play The Ball Game</h1>
+        <div>
+            <button onclick="f1()">Start</button>
+            <button onclick="rewind()">Rewind</button>
+        <button onclick="Stop()">Stop</button>
+        <button onclick="Resume()">Resume</button>
+        <button onclick="Reset()">Reset</button>
+        </div>
+        <img src="data:image/jpeg;base64,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" alt="ball" id="ball"/>
+    </body>
+    <script>
+        var ball= document.getElementById("ball");
+        //var body = document.getElementById("body");
+        var x=0;
+        var y=0;
+        var i;
+        var h=window.innerHeight-310;
+        var w=window.innerWidth-60;
+        function f1(){
+            clearInterval(i);
+            i=setInterval(function (){
+                
+                if(x<(w/2) && y<h)
+                {
+                    x+=10;
+                    y+=5;
+                    ball.style.left=x+"px";
+                    ball.style.top=y+"px";
+                    ball.style.transform="rotate(30deg) ";
+                }
+                else if(x<=w)
+                {
+                    if(y<h-1)
+                    {
+                        //document.body.style.background="linear-gradient(rgba(77, 192, 87, 0.849),rgba(115, 194, 240, 0.952))";
+                        document.body.style.backgroundColor="yellow";
+                        
+                    }
+                    x+=10;
+                    y-=5;
+                    ball.style.left=x+"px";
+                    ball.style.top=y+"px";
+                    ball.style.transform="rotate(30deg)";
+                }
+                else
+                {
+                    // document.body.style.backgroundColor = "linear-gradient(rgba(115, 194, 240, 0.952),rgba(77, 192, 87, 0.849))";
+                    document.body.style.backgroundColor="rgb(10, 255, 10)";
+                }
+            }, 50);
+        }
+        function Stop()
+        {
+            clearInterval(i);
+        }
+        function Resume()
+        {
+            clearInterval(i);
+            i=setInterval(function (){
+                setInterval(function()
+                {
+                    ball.style.transform="rotate(30deg)";
+                },100);
+                if(x<(w/2) && y<h)
+                {
+                    x+=10;
+                    y+=5;
+                    ball.style.left=x+"px";
+                    ball.style.top=y+"px";
+                }
+                else if(x<=w)
+                {
+                    if(y<h-1)
+                    {
+                        //document.body.style.background="linear-gradient(rgba(77, 192, 87, 0.849),rgba(115, 194, 240, 0.952))";
+                        document.body.style.backgroundColor="yellow";
+                    }
+                    x+=10;
+                    y-=5;
+                    ball.style.left=x+"px";
+                    ball.style.top=y+"px";
+                    
+                }
+                
+                else
+                {
+                    // document.body.style.backgroundColor = "linear-gradient(rgba(115, 194, 240, 0.952),rgba(77, 192, 87, 0.849))";
+                    document.body.style.backgroundColor="rgb(10, 255, 10)";
+                }
+            }, 50);
+        }
+        function Reset()
+        {
+            clearInterval(i)
+            x=0;
+            y=0;
+            ball.style.left=x+"px";
+            ball.style.top=y+"px";
+            document.body.style.backgroundColor="";
+        }
+        function rewind() {
+    clearInterval(i);
+    i = setInterval(function () {
+        if(x>(w/2) && y<h)
+                {
+                    x-=10;
+                    y+=5;
+                    ball.style.left=x+"px";
+                    ball.style.top=y+"px";
+                }
+                else if(x>=1)
+                {
+                    if(y<h-1)
+                    {
+                        //document.body.style.background="linear-gradient(rgba(77, 192, 87, 0.849),rgba(115, 194, 240, 0.952))";
+                        document.body.style.backgroundColor="yellow";
+                    }
+                    x-=10;
+                    y-=5;
+                    ball.style.left=x+"px";
+                    ball.style.top=y+"px";
+                    
+                }
+                else
+                {
+                    // document.body.style.backgroundColor = "linear-gradient(rgba(115, 194, 240, 0.952),rgba(77, 192, 87, 0.849))";
+                    document.body.style.backgroundColor="";
+                }
+    }, 50);
+}
+       
+    </script>
+</html>
